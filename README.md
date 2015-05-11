@@ -10,7 +10,7 @@
 
 ### Compile
 
-    cd e-Services/e-entity
+    cd e-Entity
     mvn clean install    
 
 ## Run through the Broker
