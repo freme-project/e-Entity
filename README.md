@@ -19,13 +19,17 @@ Learn how to start the broker [here](https://github.com/freme-project/technical-
 
 ## Try it
 
-Example #1: text for processing sent as plain text.
+#### Example #1:
+
+Text for processing sent as plain text.
 
     curl -v "http://localhost:8080/e-entity/dbpedia-spotlight?confidence=0.3&input=This+is+Germany." -H "Accept: text/turtle"
 
     curl -v "http://localhost:8080/e-entity/dbpedia-spotlight?confidence=0.3&input=This+is+Germany." -H "Accept: application/json-ld"
 
-Example #1: text for processing as NIF document.
+#### Example #2:
+
+Text for processing as NIF document.
 
     curl -X POST -d @../src/main/resources/data/data.ttl "http://localhost:8080/e-entity/dbpedia-spotlight/?confidence=0.3" -H "Content-Type: text/turtle" -H "Accept: text/turtle"
 
