@@ -21,7 +21,7 @@ Learn how to start the broker [here](https://github.com/freme-project/technical-
 
 #### Example #1:
 
-Text for processing sent as plain text.
+Text for processing sent as a plain text.
 
     curl -v "http://localhost:8080/e-entity/dbpedia-spotlight?confidence=0.3&input=This+is+Germany." -H "Accept: text/turtle"
 
@@ -29,7 +29,7 @@ Text for processing sent as plain text.
 
 #### Example #2:
 
-Text for processing as NIF document.
+Text for processing sent as a NIF document.
 
     curl -X POST -d @../src/main/resources/data/data.ttl "http://localhost:8080/e-entity/dbpedia-spotlight/?confidence=0.3" -H "Content-Type: text/turtle" -H "Accept: text/turtle"
 
