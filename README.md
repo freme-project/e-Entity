@@ -13,7 +13,9 @@
     cd e-Services/e-entity
     mvn clean install    
 
-## Run the Broker
+## Run through the Broker
+
+Learn how to start the broker [here](https://github.com/freme-project/technical-discussion/wiki/Compile-FREME-from-Source).
 
 ## Try it
 
@@ -26,3 +28,23 @@ Example #1: text for processing sent as plain text.
 Example #1: text for processing as NIF document.
 
     curl -X POST -d @../src/main/resources/data/data.ttl "http://localhost:8080/e-entity/dbpedia-spotlight/?confidence=0.3" -H "Content-Type: text/turtle" -H "Accept: text/turtle"
+
+### Working on
+
+* support for French, Spanish, Italian, German, Dutch
+
+### TODOs
+
+* domain specific named entity extraction
+* support for languages with highest priority: English, French, Spanish, Italian, German, Dutch, Japanese
+* support for dataset specific entity linking
+  * user can upload his data and perform entity recognition against this dataset
+
+### Complete
+
+* first prototype against DBpedia Spotlight (11.5.2015)
+  * support for English
+  * `confidence` and `input` parameters
+  * support for NIF (in/out)
+
+
