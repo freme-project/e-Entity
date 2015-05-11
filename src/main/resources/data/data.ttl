@@ -1,0 +1,82 @@
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix nif:   <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> .
+@prefix itsrdf: <http://www.w3.org/2005/11/its/rdf#> .
+@prefix rutp:  <http://rdfunit.aksw.org/data/patterns#> .
+@prefix rlog:  <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/rlog#> .
+@prefix oslc:  <http://open-services.net/ns/core#> .
+@prefix dsp:   <http://dublincore.org/dc-dsp#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rutg:  <http://rdfunit.aksw.org/data/generators#> .
+@prefix schema: <http://schema.org/> .
+@prefix olia:  <http://purl.org/olia/olia.owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix p:     <http://127.0.0.1:9995/spotlight#> .
+@prefix rut:   <http://rdfunit.aksw.org/ns/core#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rutr:  <http://rdfunit.aksw.org/data/results#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix spin:  <http://spinrdf.org/spin#> .
+@prefix rutt:  <http://rdfunit.aksw.org/data/tests#> .
+@prefix ruts:  <http://rdfunit.aksw.org/data/testsuite#> .
+
+nif:lastWord  a  owl:ObjectProperty .
+
+nif:previousWord  a  owl:ObjectProperty .
+
+<urn:uuid:1eb52471-ce7e-4761-a161-07fb201be3ba>
+        a             rlog:Entry ;
+        rlog:date     "2015-04-27T13:09:22.072Z"^^xsd:dateTime ;
+        rlog:level    rlog:DEBUG ;
+        rlog:message  "Finished creating 1 sentence(s) with 4 word(s) " ;
+        dc:creator    "org.nlp2rdf.implementation.spotlight.SpotlightWrapper" .
+
+nif:word  a     owl:ObjectProperty .
+
+nif:isString  a  owl:DatatypeProperty .
+
+nif:beginIndex  a  owl:DatatypeProperty .
+
+<urn:uuid:0ef8de6c-9517-47bd-a6eb-c20f202b006c>
+        a             rlog:Entry ;
+        rlog:date     "2015-04-27T13:09:22.292Z"^^xsd:dateTime ;
+        rlog:level    rlog:DEBUG ;
+        rlog:message  "Annotated 1 nif:Context(s)  in 224.0 ms. (avg 224.0) producing 71 triples" ;
+        dc:creator    "org.nlp2rdf.implementation.spotlight.SpotlightWS" .
+
+rlog:level  a   owl:ObjectProperty .
+
+nif:nextWord  a  owl:ObjectProperty .
+
+nif:sentence  a  owl:ObjectProperty .
+
+nif:anchorOf  a  owl:DatatypeProperty .
+
+<http://127.0.0.1:9995/spotlight#char=0,16>
+        a                     nif:Context , nif:Sentence , nif:RFC5147String ;
+        nif:anchorOf          "This is Germany." ;
+        nif:beginIndex        "0" ;
+        nif:endIndex          "16" ;
+        nif:firstWord         <http://127.0.0.1:9995/spotlight#char=0,4> ;
+        nif:isString          "This is Germany." ;
+        nif:lastWord          <http://127.0.0.1:9995/spotlight#char=15,16> ;
+        nif:word              <http://127.0.0.1:9995/spotlight#char=5,7> , <http://127.0.0.1:9995/spotlight#char=8,15> .
+
+rlog:date  a    owl:DatatypeProperty .
+
+nif:firstWord  a  owl:ObjectProperty .
+
+nif:Context  a  owl:Class .
+
+rlog:message  a  owl:DatatypeProperty .
+
+nif:Sentence  a  owl:Class .
+
+nif:referenceContext  a  owl:ObjectProperty .
+
+nif:endIndex  a  owl:DatatypeProperty .
+
+nif:RFC5147String  a  owl:Class .
+
+nif:Word  a     owl:Class .
