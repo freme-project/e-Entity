@@ -91,12 +91,12 @@
 		<repository>
 			<id>freme-nexus</id>
 			<name>Internal Releases</name>
-			<url>http://rv1443.1blu.de/nexus/content/repositories/freme-releases/</url>
+			<url>http://rv1443.1blu.de/nexus/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>freme-nexus</id>
 			<name>Internal Releases</name>
-			<url>http://rv1443.1blu.de/nexus/content/repositories/freme-snapshots/</url>
+			<url>http://rv1443.1blu.de/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
