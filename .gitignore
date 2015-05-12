@@ -8,3 +8,6 @@ e-entity-0.0.1-SNAPSHOT.jar
 e-entity-0.0.1-SNAPSHOT.jar.original
 nbactions.xml
 /target/
+.settings
+.classpath
+.project
