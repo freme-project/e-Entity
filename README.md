@@ -36,14 +36,13 @@ Text for processing sent as a NIF document.
 
 ### Working on
 
-* support for French, Spanish, Italian, German, Dutch
+* integration of Entityclassifier.eu
 
 ### TODOs
 
+* support for integration of external knowledge basese
 * domain specific named entity extraction
-* support for languages with highest priority: English, French, Spanish, Italian, German, Dutch, Japanese
-* support for dataset specific entity linking
-  * user can upload his data and perform entity recognition against this dataset
+* support for French, Spanish, Italian, German, Dutch
 
 ### Complete
 
