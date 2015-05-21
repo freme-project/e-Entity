@@ -6,6 +6,7 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
+import eu.freme.eservices.eentity.exceptions.BadRequestException;
 import eu.freme.eservices.eentity.exceptions.ExternalServiceFailedException;
 
 public class EEntityService {
@@ -13,7 +14,7 @@ public class EEntityService {
 	String dbpediaSpotlightURL = "http://spotlight.nlp2rdf.aksw.org/spotlight?f=text&i={text}&t=direct&confidence=";
 
 	public String callDBpediaSpotlight(String text, String confidenceParam, String languageParam)
-			throws ExternalServiceFailedException {
+			throws ExternalServiceFailedException, BadRequestException {
 
 		try {
 			HttpResponse<String> response = Unirest.get(dbpediaSpotlightURL+confidenceParam)
@@ -21,7 +22,11 @@ public class EEntityService {
 					.header("Content-type", "text/turtle").asString();
 
 			if (response.getStatus() != HttpStatus.OK.value()) {
-				throw new ExternalServiceFailedException(response.getBody());
+				if( response.getStatus() == HttpStatus.BAD_REQUEST.value() ){
+					throw new BadRequestException(response.getBody());
+				} else{
+					throw new ExternalServiceFailedException(response.getBody());					
+				}
 			}
 
 			String nif = response.getBody();
