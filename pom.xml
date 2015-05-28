@@ -53,7 +53,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
@@ -61,7 +60,6 @@
 			</plugin>
 			<plugin> <!-- build a jar with dependencies -->
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.5</version>
 				<configuration>
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
@@ -118,4 +116,11 @@
 			</releases>
 		</repository>
 	</repositories>
+
+	<scm>
+		<connection>scm:git:git@github.com:freme-project/e-Entity.git</connection>
+		<url>scm:git:git@github.com/freme-project:e-Entity.git</url>
+		<developerConnection>scm:git:git@github.com:freme-project/e-Entity.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
 </project>
