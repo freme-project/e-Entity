@@ -57,8 +57,8 @@ public class EEntityService {
 //            System.out.println(URLDecoder.decode(text, "UTF-8"));
             
             HttpResponse<String> response = Unirest.post(fremeNERURL+"language="+languageParam+"&dataset="+dataset)
-                    .header("Content-Type", "application/x-www-form-urlencoded")
-//                    .body(URLEncoder.encode(text, "UTF-8")).asString();
+                    .header("Content-Type", "text/plain; charset=UTF-8")
+//                    .body(URLEncoder.encode(text, "UTF-8").replaceAll("\\+", " ")).asString();
                     .body(text).asString();
             
 //            HttpResponse<String> response = Unirest.post(fremeNERURL+"language="+languageParam+"&dataset="+dataset)
@@ -76,7 +76,7 @@ public class EEntityService {
             return nif;
         } catch (UnirestException e) {
             throw new ExternalServiceFailedException(e.getMessage());
-        } 
+        }
 //        catch (UnsupportedEncodingException ex) {
 //            Logger.getLogger(EEntityService.class.getName()).log(Level.SEVERE, null, ex);
 //        }
