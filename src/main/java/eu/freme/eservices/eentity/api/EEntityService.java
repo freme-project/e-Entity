@@ -26,10 +26,6 @@ public class EEntityService {
             if(confidenceParam == null) {
                 confidenceParam = "0.3";
             }
-            
-            System.out.println(text);
-            System.out.println(confidenceParam);
-            System.out.println(prefix);
            
             HttpResponse<String> response = Unirest.post(dbpediaSpotlightURL+confidenceParam+"&prefix="+prefix)
                     .header("Content-Type", "application/x-www-form-urlencoded")
@@ -57,9 +53,6 @@ public class EEntityService {
         
         try {
             
-            System.out.println(text);
-            System.out.println(prefix);
-           
             HttpResponse<String> response = Unirest.post(fremeNERURL+"language="+languageParam+"&dataset="+dataset)
                     .header("Content-Type", "application/x-www-form-urlencoded")
                     .body(URLEncoder.encode(text, "UTF-8")).asString();
@@ -84,5 +77,4 @@ public class EEntityService {
         }
         return null;
     }
-    
 }
