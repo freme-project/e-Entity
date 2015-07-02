@@ -9,6 +9,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import eu.freme.eservices.eentity.exceptions.BadRequestException;
 import eu.freme.eservices.eentity.exceptions.ExternalServiceFailedException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,10 +53,13 @@ public class EEntityService {
             throws ExternalServiceFailedException, BadRequestException {
         
         try {
+//            System.out.println(text);
+//            System.out.println(URLDecoder.decode(text, "UTF-8"));
             
             HttpResponse<String> response = Unirest.post(fremeNERURL+"language="+languageParam+"&dataset="+dataset)
                     .header("Content-Type", "application/x-www-form-urlencoded")
-                    .body(URLEncoder.encode(text, "UTF-8")).asString();
+//                    .body(URLEncoder.encode(text, "UTF-8")).asString();
+                    .body(text).asString();
             
 //            HttpResponse<String> response = Unirest.post(fremeNERURL+"language="+languageParam+"&dataset="+dataset)
 //                    .header("Content-Type", "application/x-www-form-urlencoded")
@@ -72,9 +76,10 @@ public class EEntityService {
             return nif;
         } catch (UnirestException e) {
             throw new ExternalServiceFailedException(e.getMessage());
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(EEntityService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+        } 
+//        catch (UnsupportedEncodingException ex) {
+//            Logger.getLogger(EEntityService.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return null;
     }
 }
