@@ -49,14 +49,14 @@ public class EEntityService {
         return null;
     }
     
-    public String callFremeNER(String text, String languageParam, String prefix, String dataset)
+    public String callFremeNER(String text, String languageParam, String prefix, String dataset, int numLinks)
             throws ExternalServiceFailedException, BadRequestException {
         
         try {
 //            System.out.println(text);
 //            System.out.println(URLDecoder.decode(text, "UTF-8"));
             
-            HttpResponse<String> response = Unirest.post(fremeNERURL+"language="+languageParam+"&dataset="+dataset+"&prefix="+prefix)
+            HttpResponse<String> response = Unirest.post(fremeNERURL+"language="+languageParam+"&dataset="+dataset+"&prefix="+prefix+"&numLinks="+numLinks)
                     .header("Content-Type", "text/plain; charset=UTF-8")
 //                    .body(URLEncoder.encode(text, "UTF-8").replaceAll("\\+", " ")).asString();
                     .body(text).asString();
