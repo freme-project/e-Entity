@@ -55,7 +55,7 @@ public class EEntityService {
         try {
 //            System.out.println(text);
 //            System.out.println(URLDecoder.decode(text, "UTF-8"));
-            
+            System.out.println("links: "+numLinks);
             HttpResponse<String> response = Unirest.post(fremeNERURL+"language="+languageParam+"&dataset="+dataset+"&prefix="+prefix+"&numLinks="+numLinks)
                     .header("Content-Type", "text/plain; charset=UTF-8")
 //                    .body(URLEncoder.encode(text, "UTF-8").replaceAll("\\+", " ")).asString();
