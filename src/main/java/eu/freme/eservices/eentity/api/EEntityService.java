@@ -23,12 +23,17 @@ public class EEntityService {
             throws ExternalServiceFailedException, BadRequestException {
         
         try {
+            
+            if(prefix.equals("http://freme-project.eu/")) {
+                prefix = "http://freme-project.eu/#";
+            }
+            
             // if confidence param is not set, the default value is 0.3
             if(confidenceParam == null) {
                 confidenceParam = "0.3";
             }
            
-            HttpResponse<String> response = Unirest.post(dbpediaSpotlightURL+confidenceParam+"&prefix="+prefix)
+            HttpResponse<String> response = Unirest.post(dbpediaSpotlightURL+confidenceParam+"&prefix="+URLEncoder.encode(prefix,"UTF-8"))
                     .header("Content-Type", "application/x-www-form-urlencoded")
                     .body("i="+URLEncoder.encode(text, "UTF-8")).asString();
             
@@ -40,6 +45,7 @@ public class EEntityService {
                 }
             }
             String nif = response.getBody();
+//            System.out.println(nif);
             return nif;
         } catch (UnirestException e) {
             throw new ExternalServiceFailedException(e.getMessage());
@@ -56,7 +62,7 @@ public class EEntityService {
 //            System.out.println(text);
 //            System.out.println(URLDecoder.decode(text, "UTF-8"));
             System.out.println("links: "+numLinks);
-            HttpResponse<String> response = Unirest.post(fremeNERURL+"language="+languageParam+"&dataset="+dataset+"&prefix="+prefix+"&numLinks="+numLinks)
+            HttpResponse<String> response = Unirest.post(fremeNERURL+"language="+languageParam+"&dataset="+dataset+"&prefix="+URLEncoder.encode(prefix,"UTF-8")+"&numLinks="+numLinks)
                     .header("Content-Type", "text/plain; charset=UTF-8")
 //                    .body(URLEncoder.encode(text, "UTF-8").replaceAll("\\+", " ")).asString();
                     .body(text).asString();
@@ -76,10 +82,13 @@ public class EEntityService {
             return nif;
         } catch (UnirestException e) {
             throw new ExternalServiceFailedException(e.getMessage());
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(EEntityService.class.getName()).log(Level.SEVERE, null, ex);
         }
 //        catch (UnsupportedEncodingException ex) {
 //            Logger.getLogger(EEntityService.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //        return null;
+        throw new ExternalServiceFailedException("External service failed to process the request.");
     }
 }
