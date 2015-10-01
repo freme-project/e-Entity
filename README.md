@@ -5,7 +5,7 @@ The service is in details described [here](https://github.com/freme-project/tech
 
 ### Requirements
 
-* Java >= 1.7
+* Java >= 1.8
 * Maven
 * Git
 
