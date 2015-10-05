@@ -28,6 +28,7 @@ import eu.freme.eservices.eentity.exceptions.ExternalServiceFailedException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -72,14 +73,25 @@ public class EEntityService {
         return null;
     }
     
-    public String callFremeNER(String text, String languageParam, String prefix, String dataset, int numLinks)
+    public String callFremeNER(String text, String languageParam, String prefix, String dataset, int numLinks, ArrayList<String> rMode, String informat)
             throws ExternalServiceFailedException, BadRequestException {
         
         try {
+            boolean firstmode = true;
+            String modes = "";
+            for(String m : rMode) {
+                if(firstmode) {
+                    modes=m;
+                    firstmode = false;
+                } else {
+                    modes += ","+m;
+                }                
+            }
 //            System.out.println(text);
 //            System.out.println(URLDecoder.decode(text, "UTF-8"));
             System.out.println("links: "+numLinks);
-            HttpResponse<String> response = Unirest.post(fremeNERURL+"language="+languageParam+"&dataset="+dataset+"&prefix="+URLEncoder.encode(prefix,"UTF-8")+"&numLinks="+numLinks)
+            HttpResponse<String> response = Unirest.post(fremeNERURL+"language="+languageParam+"&dataset="+dataset+"&prefix="+URLEncoder.encode(prefix,"UTF-8")+"&numLinks="+numLinks+"&mode="+modes)
+                    .header("Content-Type", informat+" charset=UTF-8")
                     .header("Content-Type", "text/plain; charset=UTF-8")
 //                    .body(URLEncoder.encode(text, "UTF-8").replaceAll("\\+", " ")).asString();
                     .body(text).asString();
