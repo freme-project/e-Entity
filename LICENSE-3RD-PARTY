@@ -8,18 +8,18 @@
                         http://www.apache.org/licenses/
 
 applies to:
-	- Apache Jena - jena-arq:2.11.2, Copyright 2011–2015 The Apache Software Foundation
-	- Apache Jena - jena-core:2.11.2, Copyright 2011–2015 The Apache Software Foundation
-	- Apache Maven Plugins - maven-assembly-plugin:2.5.1, Copyright 2002–2015 The Apache Software Foundation. All rights reserved.
-	- Apache Maven Plugins - maven-clean-plugin:2.5, Copyright 2002–2015 The Apache Software Foundation. All rights reserved.
-	- Apache Maven Plugins - maven-compiler-plugin:3.1, Copyright 2002–2015 The Apache Software Foundation. All rights reserved.
-	- Apache Maven Plugins - maven-deploy-plugin:2.8.2, Copyright 2002–2015 The Apache Software Foundation. All rights reserved.
-	- Apache Maven Plugins - maven-install-plugin:2.5.2, Copyright 2002–2015 The Apache Software Foundation. All rights reserved.
-	- Apache Maven Plugins - maven-jar-plugin:2.5, Copyright 2002–2015 The Apache Software Foundation. All rights reserved.
-	- Apache Maven Plugins - maven-resources-plugin:2.6, Copyright 2002–2015 The Apache Software Foundation. All rights reserved.
-	- Apache Maven Plugins - maven-site-plugin:3.4, Copyright 2002–2015 The Apache Software Foundation. All rights reserved.
-	- Apache Maven Plugins - maven-surefire-plugin:2.17, Copyright 2002–2015 The Apache Software Foundation. All rights reserved.
-	- License Plugin - license-maven-plugin:2.3, Copyright 2008 Mycila (mathieu.carbou@gmail.com)
+	- Apache Jena: ARQ (SPARQL 1.1 Query Engine) - jena-arq:2.11.2, Copyright 2011-2015 The Apache Software Foundation
+	- Apache Jena: Core - jena-core:2.11.2, Copyright 2011-2015 The Apache Software Foundation
+	- Apache Maven Plugins - maven-assembly-plugin:2.5.1, Copyright 2002-2015 The Apache Software Foundation. All rights reserved.
+	- Apache Maven Plugins - maven-clean-plugin:2.5, Copyright 2002-2015 The Apache Software Foundation. All rights reserved.
+	- Apache Maven Plugins - maven-compiler-plugin:3.1, Copyright 2002-2015 The Apache Software Foundation. All rights reserved.
+	- Apache Maven Plugins - maven-deploy-plugin:2.8.2, Copyright 2002-2015 The Apache Software Foundation. All rights reserved.
+	- Apache Maven Plugins - maven-install-plugin:2.5.2, Copyright 2002-2015 The Apache Software Foundation. All rights reserved.
+	- Apache Maven Plugins - maven-jar-plugin:2.5, Copyright 2002-2015 The Apache Software Foundation. All rights reserved.
+	- Apache Maven Plugins - maven-resources-plugin:2.6, Copyright 2002-2015 The Apache Software Foundation. All rights reserved.
+	- Apache Maven Plugins - maven-site-plugin:3.4, Copyright 2002-2015 The Apache Software Foundation. All rights reserved.
+	- Apache Maven Plugins - maven-surefire-plugin:2.17, Copyright 2002-2015 The Apache Software Foundation. All rights reserved.
+	- License Maven Plugin - license-maven-plugin:2.3, Copyright 2008 Mycila (mathieu.carbou@gmail.com)
 	- Spring Boot - spring-boot-maven-plugin:1.2.5.RELEASE
 	- Spring Boot - spring-boot-starter-web:1.2.5.RELEASE
 
@@ -465,7 +465,7 @@ applies to:
                              http://mit-license.org/
 
 applies to:
-	- Unirest - unirest-java:1.4.5, Copyright 2013-2015 Mashape
+	- Unirest - unirest-java:1.4.6, Copyright 2013-2015 Mashape
 
 -----------------------------------------------------------------------------
 
