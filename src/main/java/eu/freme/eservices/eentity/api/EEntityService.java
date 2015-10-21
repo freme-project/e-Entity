@@ -17,6 +17,8 @@
  */
 package eu.freme.eservices.eentity.api;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
 
 import com.mashape.unirest.http.HttpResponse;
@@ -32,16 +34,21 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import eu.freme.broker.FremeCommonConfig;
+
+@Import(FremeCommonConfig.class)
 public class EEntityService {
-    
-    private String dbpediaSpotlightURL = "http://spotlight.nlp2rdf.aksw.org/spotlight?f=text&t=direct&confidence=";
+
+    @Value("${dbpediaSpotlightEndpointUrl:http://spotlight.nlp2rdf.aksw.org/spotlight}")
+    private String dbpediaSpotlightURL;
+
 //    private String fremeNERURL = "http://139.18.2.231:8080/api/entities?";
     private String fremeNERURL = "http://rv2622.1blu.de:8080/api/entities?";
-    
-    
+
     public String callDBpediaSpotlight(String text, String confidenceParam, String languageParam, String prefix)
             throws ExternalServiceFailedException, BadRequestException {
-        
+
+
         try {
             
             if(prefix.equals("http://freme-project.eu/")) {
@@ -53,7 +60,7 @@ public class EEntityService {
                 confidenceParam = "0.3";
             }
            
-            HttpResponse<String> response = Unirest.post(dbpediaSpotlightURL+confidenceParam+"&prefix="+URLEncoder.encode(prefix,"UTF-8"))
+            HttpResponse<String> response = Unirest.post(dbpediaSpotlightURL+"?f=text&t=direct&confidence="+confidenceParam+"&prefix="+URLEncoder.encode(prefix,"UTF-8"))
                     .header("Content-Type", "application/x-www-form-urlencoded")
                     .body("i="+URLEncoder.encode(text, "UTF-8")).asString();
             
