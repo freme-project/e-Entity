@@ -18,7 +18,6 @@
 package eu.freme.eservices.eentity.api;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
 
 import com.mashape.unirest.http.HttpResponse;
@@ -34,12 +33,10 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import eu.freme.broker.FremeCommonConfig;
 
-@Import(FremeCommonConfig.class)
 public class EEntityService {
 
-    @Value("${dbpediaSpotlightEndpointUrl:http://spotlight.nlp2rdf.aksw.org/spotlight}")
+    @Value("${freme.eentity.dbpediaSpotlightEndpointUrl:http://spotlight.nlp2rdf.aksw.org/spotlight}")
     private String dbpediaSpotlightURL;
 
 //    private String fremeNERURL = "http://139.18.2.231:8080/api/entities?";
