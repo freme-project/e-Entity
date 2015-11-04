@@ -34,9 +34,9 @@ import java.util.logging.Logger;
 
 public class EEntityService {
     
-    private String dbpediaSpotlightURL = "http://spotlight.nlp2rdf.aksw.org/spotlight?f=text&t=direct&confidence=";
+    private final String dbpediaSpotlightURL = "http://spotlight.nlp2rdf.aksw.org/spotlight?f=text&t=direct&confidence=";
 //    private String fremeNERURL = "http://139.18.2.231:8080/api/entities?";
-    private String fremeNERURL = "http://rv2622.1blu.de:8081/api/entities?";
+    private final String fremeNERURL = "http://rv2622.1blu.de:8081/api/entities?";
     
     
     public String callDBpediaSpotlight(String text, String confidenceParam, String languageParam, String prefix)
