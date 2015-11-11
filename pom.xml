@@ -62,11 +62,6 @@
 			<artifactId>jena-arq</artifactId>
 			<version>2.11.2</version>
 		</dependency>
-		<dependency>
-			<groupId>eu.freme</groupId>
-			<artifactId>Broker</artifactId>
-			<version>0.4-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

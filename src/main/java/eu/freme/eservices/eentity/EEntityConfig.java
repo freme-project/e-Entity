@@ -17,7 +17,6 @@
  */
 package eu.freme.eservices.eentity;
 
-import eu.freme.broker.FremeCommonConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
