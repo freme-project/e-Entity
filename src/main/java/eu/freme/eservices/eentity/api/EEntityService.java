@@ -39,7 +39,9 @@ public class EEntityService {
     private String dbpediaSpotlightURL;
 
 //    private String fremeNERURL = "http://139.18.2.231:8080/api/entities?";
-    private String fremeNERURL = "http://rv2622.1blu.de:8080/api/entities?";
+
+    @Value("${freme.eentity.fremeNerEndpointUrl:http://rv2622.1blu.de:8080/api/entities}")
+    private String fremeNERURL;
 
     public String callDBpediaSpotlight(String text, String confidenceParam, String languageParam, String prefix)
             throws ExternalServiceFailedException, BadRequestException {
@@ -95,7 +97,7 @@ public class EEntityService {
 //            System.out.println(text);
 //            System.out.println(URLDecoder.decode(text, "UTF-8"));
             System.out.println("links: "+numLinks);
-            HttpResponse<String> response = Unirest.post(fremeNERURL+"language="+languageParam+"&dataset="+dataset+"&prefix="+URLEncoder.encode(prefix,"UTF-8")+"&numLinks="+numLinks+"&mode="+modes)
+            HttpResponse<String> response = Unirest.post(fremeNERURL+"?language="+languageParam+"&dataset="+dataset+"&prefix="+URLEncoder.encode(prefix,"UTF-8")+"&numLinks="+numLinks+"&mode="+modes)
                     .header("Content-Type", informat+"; charset=UTF-8")
 //                    .header("Content-Type", "text/plain; charset=UTF-8")
 //                    .body(URLEncoder.encode(text, "UTF-8").replaceAll("\\+", " ")).asString();
