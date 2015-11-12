@@ -17,6 +17,7 @@
  */
 package eu.freme.eservices.eentity.api;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 
 import com.mashape.unirest.http.HttpResponse;
@@ -33,15 +34,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class EEntityService {
-    
-    private final String dbpediaSpotlightURL = "http://spotlight.nlp2rdf.aksw.org/spotlight?f=text&t=direct&confidence=";
+
+    @Value("${freme.eentity.dbpediaSpotlightEndpointUrl:http://spotlight.nlp2rdf.aksw.org/spotlight}")
+    private String dbpediaSpotlightURL;
+
 //    private String fremeNERURL = "http://139.18.2.231:8080/api/entities?";
-    private final String fremeNERURL = "http://rv2622.1blu.de:8081/api/entities?";
-    
-    
+
+    @Value("${freme.eentity.fremeNerEndpointUrl:http://rv2622.1blu.de:8080/api/entities}")
+    private String fremeNERURL;
+
     public String callDBpediaSpotlight(String text, String confidenceParam, String languageParam, String prefix)
             throws ExternalServiceFailedException, BadRequestException {
-        
+
+
         try {
             
             if(prefix.equals("http://freme-project.eu/")) {
@@ -53,7 +58,7 @@ public class EEntityService {
                 confidenceParam = "0.3";
             }
            
-            HttpResponse<String> response = Unirest.post(dbpediaSpotlightURL+confidenceParam+"&prefix="+URLEncoder.encode(prefix,"UTF-8"))
+            HttpResponse<String> response = Unirest.post(dbpediaSpotlightURL+"?f=text&t=direct&confidence="+confidenceParam+"&prefix="+URLEncoder.encode(prefix,"UTF-8"))
                     .header("Content-Type", "application/x-www-form-urlencoded")
                     .body("i="+URLEncoder.encode(text, "UTF-8")).asString();
             
@@ -92,7 +97,7 @@ public class EEntityService {
 //            System.out.println(text);
 //            System.out.println(URLDecoder.decode(text, "UTF-8"));
             System.out.println("links: "+numLinks);
-            HttpResponse<String> response = Unirest.post(fremeNERURL+"language="+languageParam+"&dataset="+dataset+"&prefix="+URLEncoder.encode(prefix,"UTF-8")+"&numLinks="+numLinks+"&mode="+modes)
+            HttpResponse<String> response = Unirest.post(fremeNERURL+"?language="+languageParam+"&dataset="+dataset+"&prefix="+URLEncoder.encode(prefix,"UTF-8")+"&numLinks="+numLinks+"&mode="+modes)
                     .header("Content-Type", informat+"; charset=UTF-8")
 //                    .header("Content-Type", "text/plain; charset=UTF-8")
 //                    .body(URLEncoder.encode(text, "UTF-8").replaceAll("\\+", " ")).asString();
