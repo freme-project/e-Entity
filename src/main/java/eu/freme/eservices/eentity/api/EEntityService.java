@@ -40,7 +40,7 @@ public class EEntityService {
 
 //    private String fremeNERURL = "http://139.18.2.231:8080/api/entities?";
 
-    @Value("${freme.eentity.fremeNerEndpointUrl:http://rv2622.1blu.de:8080/api/entities}")
+    @Value("${freme.eentity.fremeNerEndpointUrl:http://rv2622.1blu.de:8081/api/entities}")
     private String fremeNERURL;
 
     public String callDBpediaSpotlight(String text, String confidenceParam, String languageParam, String prefix)
