@@ -85,9 +85,10 @@ public class EEntityService {
         return null;
     }
     
-    public String callFremeNER(String text, String languageParam, String prefix, String dataset, int numLinks, ArrayList<String> rMode, String informat)
+    public String callFremeNER(String text, String languageParam, String prefix, String dataset, int numLinks, ArrayList<String> rMode, String informat, String domain, String types)
             throws ExternalServiceFailedException, BadRequestException {
         
+//        System.out.println(types);
         try {
             boolean firstmode = true;
             String modes = "";
@@ -106,7 +107,11 @@ public class EEntityService {
 //            
 //            System.out.println("text: " + text);
 //            System.out.println("informat: " + informat);
+
             
+            HttpResponse<String> response = null;
+            
+            // linking single entity
             if(informat.equals("text/plain") && rMode.size() == 1 && modes.equals("link") ) {
                 
                 Model m = ModelFactory.createDefaultModel();
@@ -129,7 +134,7 @@ public class EEntityService {
 //                System.out.println("data:"+ result);
 //                System.out.println("path: " + fremeNERURL+"?language="+languageParam+"&dataset="+dataset+"&prefix="+URLEncoder.encode(prefix,"UTF-8")+"&numLinks="+numLinks+"&mode="+modes);
                 
-                HttpResponse<String> response = Unirest.post(fremeNERURL+"?language="+languageParam+"&dataset="+dataset+"&prefix="+URLEncoder.encode(prefix,"UTF-8")+"&numLinks="+numLinks+"&mode="+modes)
+                response = Unirest.post(fremeNERURL+"?language="+languageParam+"&dataset="+dataset+"&prefix="+URLEncoder.encode(prefix,"UTF-8")+"&numLinks="+numLinks+"&mode="+modes)
                         .header("Content-Type", "text/turtle; charset=UTF-8")
                         .body(result).asString();
                 
@@ -144,13 +149,31 @@ public class EEntityService {
                 return nif;
                 
             } else {
-            
-                HttpResponse<String> response = Unirest.post(fremeNERURL+"?language="+languageParam+"&dataset="+dataset+"&prefix="+URLEncoder.encode(prefix,"UTF-8")+"&numLinks="+numLinks+"&mode="+modes)
+                if(domain == null && types == null) {
+                    // domain and types are not specified
+                    response = Unirest.post(fremeNERURL+"?language="+languageParam+"&dataset="+dataset+"&prefix="+URLEncoder.encode(prefix,"UTF-8")+"&numLinks="+numLinks+"&mode="+modes)
                         .header("Content-Type", informat+"; charset=UTF-8")
-    //                    .header("Content-Type", "text/plain; charset=UTF-8")
-    //                    .body(URLEncoder.encode(text, "UTF-8").replaceAll("\\+", " ")).asString();
                         .body(text).asString();
+                } else if(domain != null && types != null) {
+                    // domain and types are specified
+                    response = Unirest.post(fremeNERURL+"?language="+languageParam+"&dataset="+dataset+"&prefix="+URLEncoder.encode(prefix,"UTF-8")+"&numLinks="+numLinks+"&mode="+modes+"&domain="+URLEncoder.encode(domain,"UTF-8")+"&types="+URLEncoder.encode(types,"UTF-8"))
+                        .header("Content-Type", informat+"; charset=UTF-8")
+                        .body(text).asString();
+                } else if(domain != null && types == null) {
+                    // only domain is specfied
+                    response = Unirest.post(fremeNERURL+"?language="+languageParam+"&dataset="+dataset+"&prefix="+URLEncoder.encode(prefix,"UTF-8")+"&numLinks="+numLinks+"&mode="+modes+"&domain="+URLEncoder.encode(domain,"UTF-8"))
+                        .header("Content-Type", informat+"; charset=UTF-8")
+                        .body(text).asString();
+                } else if(domain == null && types != null) {
+                    // only types is specfied
+//                    System.out.println(fremeNERURL+"?language="+languageParam+"&dataset="+dataset+"&prefix="+URLEncoder.encode(prefix,"UTF-8")+"&numLinks="+numLinks+"&mode="+modes+"&types="+URLEncoder.encode(types,"UTF-8"));
+                    response = Unirest.post(fremeNERURL+"?language="+languageParam+"&dataset="+dataset+"&prefix="+URLEncoder.encode(prefix,"UTF-8")+"&numLinks="+numLinks+"&mode="+modes+"&types="+URLEncoder.encode(types,"UTF-8"))
+                        .header("Content-Type", informat+"; charset=UTF-8")
+                        .body(text).asString();                    
+                }
 
+//                    .header("Content-Type", "text/plain; charset=UTF-8")
+    //                    .body(URLEncoder.encode(text, "UTF-8").replaceAll("\\+", " ")).asString();
     //            HttpResponse<String> response = Unirest.post(fremeNERURL+"language="+languageParam+"&dataset="+dataset)
     //                    .header("Content-Type", "application/x-www-form-urlencoded")
     //                    .body("i="+URLEncoder.encode(text, "UTF-8")).asString();
