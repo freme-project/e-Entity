@@ -22,7 +22,7 @@
 
 	<groupId>eu.freme</groupId>
 	<artifactId>e-entity</artifactId>
-	<version>0.5-SNAPSHOT</version>
+	<version>0.5</version>
 	<packaging>jar</packaging>
 	<inceptionYear>2015</inceptionYear>
 
