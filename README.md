@@ -1,5 +1,7 @@
 # FREME e-Entity service
 
+**This repository is deprecated. It has moved to [e-services repository](https://github.com/freme-project/e-services).**
+
 The service is in details described [here](https://github.com/freme-project/technical-discussion/wiki/Broker-API-Calls#user-content-e-entity).
 ## Building
 
